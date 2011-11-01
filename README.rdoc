@@ -1,0 +1,20 @@
+== Dalli Storage Extensions
+
+The dalli-store-extensions plugin for Rails 3 adds support for match-based deletes while using the dalli storage engine.
+
+=== Installation
+
+In your Gemfile, make sure you have dalli and this gem:
+
+  gem 'dalli'
+  gem 'dalli-store-extensions', :git => "git://github.com/defconomicron/dalli-store-extensions.git"
+
+In your config/environments/X.rb, where X is the name of the environment where you'd like to enable caching, make sure you are using the dalli storage engine:
+
+  config.cache_store = :dalli_store
+
+You now use standard rails caching mechanisms. To expire a fragment:
+
+  expire_fragment /.*search.*/
+
+Where the regular expression matches the fragment cache path.
